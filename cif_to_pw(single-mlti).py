@@ -4,16 +4,26 @@ import re
 import glob
 import string
 import math
+import sys
 
-os.chdir("C:\Users\dcc\Desktop")
-a=glob.glob("*.cif")
+os.chdir(os.getcwd())
 
-print a[0].replace("cif","txt")
+if len(sys.argv) < 3  :
+	print "          Usage\n          python cif_to_pw(single-mlti).py n  inputfile\n          n is the number of the nonmovale atom"
+	sys.exit()
+
+a = sys.argv[2:]
+
+n = int(sys.argv[1])
+
+
+
+
 
 
 
 def cif_to_pw(cif):
-	n = 12
+	
 	z = 1
 	a=[]
 	f=open(cif,'r')

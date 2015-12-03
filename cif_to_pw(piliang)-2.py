@@ -4,16 +4,29 @@ import re
 import glob
 import string
 import math
+import sys
 
-os.chdir("C:\Users\dcc\Desktop")
-a=glob.glob("*.cif")
+os.chdir(os.getcwd())
 
-print a[0].replace("cif","txt")
+
+
+if len(sys.argv) < 3  :
+	print "          Usage\n          python cif_to_pw(piliang)-2.py n\n          n is the number of the nonmovale atom\n          all    --all the xx.cif in current directory  will be converted\n          ciffile1 ciffile2……     --the ciffiles will be converted"
+	sys.exit()
+elif len(sys.argv) == 3 and sys.argv[2] == "all":
+	a = glob.glob("*.cif")
+elif len(sys.argv) >= 3 and sys.argv[2] != "all":
+	a = sys.argv[2:]
+else :
+	sys.exit()
+
+
+n = int(sys.argv[1])
 
 
 
 def cif_to_pw(cif):
-	n = 12
+	
 	z = 1
 	a=[]
 	f=open(cif,'r')

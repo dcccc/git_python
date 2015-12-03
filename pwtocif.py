@@ -5,7 +5,7 @@ import math
 def pw_to_cif(pw):
 	
 	f=open(pw,'r')
-	cif=pw.replace("in","cif")
+	cif=pw.replace("inp","cif")
 	a=open(cif,'a')
 	i="data_O-TiO2-110-8\n_audit_creation_date              2015-08-28\n_audit_creation_method            'Materials Studio'\n_symmetry_space_group_name_H-M    'P1'\n_symmetry_Int_Tables_number       1\n_symmetry_cell_setting            triclinic\nloop_\n_symmetry_equiv_pos_as_xyz\n  x,y,z\n"
 	a.write(i)
