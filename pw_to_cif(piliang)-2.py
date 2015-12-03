@@ -5,7 +5,7 @@ import glob
 import math
 import sys
 
-os.chdir("C:\Users\dcc\Desktop")
+os.chdir(os.getcwd())
 
 
 
