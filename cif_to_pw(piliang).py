@@ -6,14 +6,21 @@ import string
 import math
 
 os.chdir("C:\Users\dcc\Desktop")
-a=glob.glob("*.cif")
 
-print a[0].replace("cif","txt")
+
+if len(sys.argv) < 2 or  len(sys.argv) > 2 :
+	"          Usage\n          python cif_to_pw(piliang).py n\n          n is the number of the nonmovale atom\nall the infiles on desktop will be converted"
+	sys.exit()
+else :
+	n = int(sys.argv[1])
+
+a = glob.glob("*.cif")
+
 
 
 
 def cif_to_pw(cif):
-	n = 12
+	
 	z = 1
 	a=[]
 	f=open(cif,'r')

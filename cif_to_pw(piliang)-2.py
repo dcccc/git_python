@@ -11,7 +11,7 @@ os.chdir(os.getcwd())
 
 
 if len(sys.argv) < 3  :
-	print "          Usage\n          python cif_to_pw(piliang)-2.py n\n          n is the number of the nonmovale atom\n          all    --all the xx.cif in current directory  will be converted\n          ciffile1 ciffile2……     --the ciffiles will be converted"
+	print "          Usage\n          python cif_to_pw(piliang)-2.py n   ciffiles or all\n          n is the number of the nonmovale atom\n          all    --all the xx.cif in current directory  will be converted\n          ciffile1 ciffile2……     --the ciffiles will be converted"
 	sys.exit()
 elif len(sys.argv) == 3 and sys.argv[2] == "all":
 	a = glob.glob("*.cif")

@@ -10,12 +10,19 @@ os.chdir("C:\Users\dcc\Desktop")
 
 
 
-if len(sys.argv) < 1 or  len(sys.argv) > 1 :
-	"          Usage\n          python cif_to_pw(piliang)-2.py\nall the infiles on desktop will be converted"
+if len(sys.argv) < 2  :
+	print "          Usage\n          python cif_to_pw(piliang)-2.py  inputfiles or all  \n          all    --all the xx.in in current directory  will be converted\n          inputfile1 inputfile2……     --the inputfiles will be converted"
 	sys.exit()
+elif sys.argv[1] == "all":
+	a = glob.glob("*.in")
+else :
+	a = sys.argv[1:]
 
 
-a = glob.glob("*.in")
+
+
+
+
 
 
 def pw_to_cif(pw):
