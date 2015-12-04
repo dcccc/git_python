@@ -6,12 +6,14 @@ import string
 import math
 import sys
 
-os.chdir(os.getcwd())
+
+
 
 if len(sys.argv) < 3  :
 	print "          Usage\n          python cell2poscar.py n  cellfile or all\n          n is the number of the nonmovale atom\n          all    --all the cellfile in current directory will be coverted"
 	sys.exit()
 elif sys.argv[2] == "all" :
+	os.chdir(os.getcwd())
 	a = glob.glob("*.cell")
 	n = int(sys.argv[1]) 
 elif sys.argv[2] != "all" :
@@ -26,7 +28,7 @@ if len(a) == 0 :
 
 def cell2vasp(cell_name) :
 	cell = open(cell_name,'r')
-	POS_name = re.split(r"/." , cell_name)[0] + "----POSCAR"
+	POS_name = cell_name[:-5] + "----POSCAR"
 	POSCAR = open(POS_name,'a')
 
 	POSCAR.write("title\n1" + "\n")
@@ -34,7 +36,7 @@ def cell2vasp(cell_name) :
 	a_p = []
 
 	for i , line in enumerate(cell) :
-		if line == "%ENDBLOCK POSITIONS_FRAC\n" :
+		if line.rstrip() == "%ENDBLOCK POSITIONS_FRAC" :
 			break
 	
 		if i == 1 or i == 2 or i == 3 :
@@ -59,8 +61,17 @@ def cell2vasp(cell_name) :
 
 	elem = sorted(list(set(elem_num)))
 
-	POSCAR.write(str(elem_num.count(elem[0])) + "   " + str(elem_num.count(elem[1])) + "   " + str(elem_num.count(elem[2])) + "\n")
-	POSCAR.write("#" + elem[0] + "   " + elem[1] + "   " + elem[2] + "\n")
+	at_sp = ""
+	at_num = ""
+
+
+	for line in elem :
+		at_num = at_num + str(elem_num.count(line)) + "   "
+		at_sp = at_sp + line + "   "
+
+
+	POSCAR.write(at_num + "\n")
+	POSCAR.write("#" + at_sp + "\n")
 	POSCAR.write("Selective dynamic\nDirect\n")
 
 	a_v = sorted(a_p , key = lambda x : x[0] )
@@ -74,3 +85,6 @@ def cell2vasp(cell_name) :
 
 for i in a :
 	cell2vasp(i)
+
+
+
