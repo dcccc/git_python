@@ -1,6 +1,9 @@
 #coding=utf-8
 import re
 import math
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 num_chi = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"]
 num_dig = ["","拾","佰","仟","万","亿"]
 
@@ -52,7 +55,7 @@ def f(num , num_cap = ""):
 	print num_capp_join
 	for i in range(len(num_capp)-1):
 			if i <= len(num_capp)-1:
-				if  num_capp[i] == "万"  and num_capp[i+1] == "亿":
+				if  num_capp[i] == "亿"  and num_capp[i+1] == "万":
 					del num_capp[i+1]
 #				if  num_capp[i] == "亿"  and num_capp[i+1] == "万":
 #					del num_capp[i+1]
@@ -64,7 +67,10 @@ def f(num , num_cap = ""):
 
 
 h=open(r"C:\Users\dcc\Desktop\test.txt",'a')
-h.write(f("1000000000"))
+h.write(f("100000000000000"))
+#print f("100000000000")
+
+
 
 
 

@@ -1,0 +1,1 @@
+matlab -c /home/flw/work/license_405329_R2014a.lic  -nodisplay
