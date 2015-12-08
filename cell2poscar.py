@@ -12,7 +12,11 @@ import sys
 if len(sys.argv) < 3  :
 	print "          Usage\n          python cell2poscar.py n  cellfile or all\n          n is the number of the nonmovale atom\n          all    --all the cellfile in current directory will be coverted"
 	sys.exit()
-elif sys.argv[2] == "all" :
+elif sys.argv[1] == "0" :
+	non_mov = "!"
+elif sys.argv[1] != "0" :
+	non_mov = ""
+if sys.argv[2] == "all" :
 	os.chdir(os.getcwd())
 	a = glob.glob("*.cell")
 	n = int(sys.argv[1]) 
@@ -55,9 +59,9 @@ def cell2vasp(cell_name) :
 	for i , eachline in enumerate(a_p) :
 		elem_num.append(eachline[0])
 		if i < n :
-			eachline.append("F  F  F")
+			eachline.append(non_mov + "F  F  F")
 		else:
-			eachline.append("T  T  T")
+			eachline.append(non_mov + "T  T  T")
 
 	elem = sorted(list(set(elem_num)))
 
@@ -69,9 +73,8 @@ def cell2vasp(cell_name) :
 		at_num = at_num + str(elem_num.count(line)) + "   "
 		at_sp = at_sp + line + "   "
 
-
+	POSCAR.write("!" + at_sp + "\n")
 	POSCAR.write(at_num + "\n")
-	POSCAR.write("#" + at_sp + "\n")
 	POSCAR.write("Selective dynamic\nDirect\n")
 
 	a_v = sorted(a_p , key = lambda x : x[0] )

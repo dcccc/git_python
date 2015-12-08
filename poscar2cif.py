@@ -45,7 +45,7 @@ def pos2cif(addr) :
 				z = line_sp
 				continue
 			elif i == 5:
-				elem = re.split(r"\s+",line.replace("#" , ""))
+				elem = re.split(r"\s+",line.replace("!" , ""))
 				continue
 			elif i == 6 :
 				elem_num = line_sp

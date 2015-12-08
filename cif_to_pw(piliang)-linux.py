@@ -41,7 +41,7 @@ def cif_to_pw(cif):
 
 		for eachline in f:
 		#b=re.match(r'(\w{1,2}\d{1,3}\s+)(\w{1,2}\s+\d.\d{4}\s+\d.\d{4}\s+\d.\d{4})(\s+)(.*)',eachline)
-			b=re.split(r'[\s\-]+',eachline)
+			b=re.split(r'[\s]+',eachline)
 			if len(b) > 6 :
 				#a=open(r"C:\Users\dcc\Desktop\tmp",'a')  #参数a表示追加写入
 				c=b[1]+"	"+b[2]+"	"+b[3]+"	"+b[4]
@@ -82,7 +82,7 @@ def cif_to_pw(cif):
 		i="                   celldm(6) = " + str(c_) + " ," + '\n'
 		h.write(i)
 
-		a = sorted(a,key = lambda x : re.split(r'\s+',x)[3] )
+		a = sorted(a,key = lambda x : float(re.split(r'\s+',x)[3]) )
 		for b in a:
 			if z < n + 1 :
 				i = b + '    0   0   0' + '\n'
