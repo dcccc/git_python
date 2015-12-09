@@ -90,18 +90,18 @@ def pos2cif(addr) :
 		a1.write(i)
 
 
-
-		a = int(elem_num[0])
-		b = a + int(elem_num[1])
-		c = b + int(elem_num[2])
-
+		a = 0
+		b = int(elem_num[a])
 		for i , line in enumerate(at_pos) :
-			if i < a :
-				a1.write(elem[0]+str(i+1)+"    "+elem[0]+"    "+line[0]+"    "+line[1]+"    "+line[2]+"   0.00000  Uiso   1.00"+"\n")
-			elif i < b :
-				a1.write(elem[1]+str(i+1)+"    "+elem[1]+"    "+line[0]+"    "+line[1]+"    "+line[2]+"   0.00000  Uiso   1.00"+"\n")
-			elif i <= c :
-				a1.write(elem[2]+str(i+1)+"    "+elem[2]+"    "+line[0]+"    "+line[1]+"    "+line[2]+"   0.00000  Uiso   1.00"+"\n")
+			if i < b :
+				a1.write(elem[a]+str(i+1)+"    "+elem[a]+"    "+line[0]+"    "+line[1]+"    "+line[2]+"   0.00000  Uiso   1.00"+"\n")
+			elif elem_num[a+1] :
+				a = a + 1
+				b = b + int(elem_num[a])
+				a1.write(elem[a]+str(i+1)+"    "+elem[a]+"    "+line[0]+"    "+line[1]+"    "+line[2]+"   0.00000  Uiso   1.00"+"\n")
+	
+
+
 
 for i in a :
 	pos2cif(i)
