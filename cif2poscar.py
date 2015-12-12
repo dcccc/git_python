@@ -10,9 +10,13 @@ if len(sys.argv) < 3  :
 	print "          Usage\n          python cif2poscar.py n  cciffile or all\n          n is the number of the nonmovale atom\n          all    --all the cellfile in current directory will be coverted"
 	sys.exit()
 elif sys.argv[1] == "0" :
-	non_mov = "!"
+	FFF = ""
+	TTT = ""
+	sel_dy = ""
 elif sys.argv[1] != "0" :
-	non_mov = ""
+	FFF = "F  F  F"
+	TTT = "T  T  T"
+	sel_dy = "Selective dynamic\n"
 if sys.argv[2] == "all" :
 	os.chdir(os.getcwd())
 	a = glob.glob("*.cell")
@@ -76,9 +80,9 @@ def cif_to_poscar(cif):
 		for i , eachline in enumerate(a_p) :
 			elem_num.append(eachline[0])
 			if i < n :
-				eachline.append(non_mov + "F  F  F")
+				eachline.append(FFF)
 			else:
-				eachline.append(non_mov + "T  T  T")
+				eachline.append(TTT)
 
 		elem = sorted(list(set(elem_num)))
 
@@ -92,7 +96,7 @@ def cif_to_poscar(cif):
 
 		POSCAR.write("!" + at_sp + "\n")
 		POSCAR.write(at_num + "\n")
-		POSCAR.write("Selective dynamic\nDirect\n")
+		POSCAR.write( sel_dy + "Direct\n")
 
 		a_v = sorted(a_p , key = lambda x : x[0] )
 
@@ -104,9 +108,4 @@ def cif_to_poscar(cif):
 
 for i in a :
 	cif_to_poscar(i)
-		
-
-
-
-
-
+	
