@@ -13,6 +13,10 @@ elif sys.argv[1] == "0" :
 	FFF = ""
 	TTT = ""
 	sel_dy = ""
+elif sys.argv[1] == "00" :
+	FFF = "T  T  T"
+	TTT = "T  T  T"
+	sel_dy = "Selective dynamic\n"
 elif sys.argv[1] != "0" :
 	FFF = "F  F  F"
 	TTT = "T  T  T"
@@ -94,7 +98,7 @@ def cif_to_poscar(cif):
 			at_num = at_num + str(elem_num.count(line)) + "   "
 			at_sp = at_sp + line + "   "
 
-		POSCAR.write("!" + at_sp + "\n")
+		POSCAR.write("" + at_sp + "\n")
 		POSCAR.write(at_num + "\n")
 		POSCAR.write( sel_dy + "Direct\n")
 
