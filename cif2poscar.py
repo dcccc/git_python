@@ -23,7 +23,7 @@ elif sys.argv[1] != "0" :
 	sel_dy = "Selective dynamic\n"
 if sys.argv[2] == "all" :
 	os.chdir(os.getcwd())
-	a = glob.glob("*.cell")
+	a = glob.glob("*.cif")
 	n = int(sys.argv[1])
 elif sys.argv[2] != "all" :
 	a = sys.argv[2:]
