@@ -61,7 +61,7 @@ def cif_to_poscar(cif , n):
 				eachline.append(TTT)
 
 		elem = sorted(list(set(elem_num)))
-		print elem
+		
 		
 
 		at_sp = ""
@@ -104,11 +104,11 @@ def pot_car(elem):
 if len(sys.argv) < 3  :
 	print "          Usage\n          python cif2poscar.py n  cciffile or all\n          n is the number of the nonmovale atom\n          all    --all the cellfile in current directory will be coverted"
 	sys.exit()
-elif sys.argv[1] == "0" :
+elif sys.argv[1] == "00" :
 	FFF = ""
 	TTT = ""
 	sel_dy = ""
-elif sys.argv[1] == "00" :
+elif sys.argv[1] == "0" :
 	FFF = "T  T  T"
 	TTT = "T  T  T"
 	sel_dy = "Selective dynamic\n"
@@ -127,6 +127,7 @@ elif sys.argv[2] != "all" :
 if len(a) == 0 :
 	print "there is no ciffile in the diretory"
 	sys.exit()
+cwd = os.getcwd() 
 
 
 for line in a :
@@ -138,6 +139,7 @@ for line in a :
 		os.mkdir(os.path.join(path_name + name))	
 		os.chdir(os.path.join(path_name + name))
 		pot_car(cif_to_poscar(cif_path , n))
+		os.chdir(cwd)
 	else :
 		print line + " doesn't exist!"
 		continue

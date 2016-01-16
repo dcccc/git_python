@@ -14,11 +14,11 @@ def task_detail():
 		line = re.split(r'\s+',pw[i].lstrip().rstrip())
 		user.append(line[1])
 
-		pid_of=os.popen("lsof -p"+line[0]+" | grep /home/").readlines()
+		pid_of=os.popen("lsof -p"+line[0]+" | grep cwd").readlines()
 		cwd = re.split(r'\s+',pid_of[0].lstrip().rstrip())[-1]
 		task= re.split(r'\/',pid_of[-1].lstrip().rstrip())[-1]
 		#task = re.match(r"",task)
-		task = task.replace("igk","in")
+		task = ".".join(re.split(r"\.",task)[:-1]) + ".in"
 		task_name.append(cwd+"/"+task)
 	return(user,task_name)
 
@@ -54,6 +54,7 @@ while ( True ) :
 
 	pwscf_log.flush()
 	task_name1 = task_name
+	user1 = user
 
 
 
