@@ -102,7 +102,7 @@ def sortall(po_sin,dis_sin,num_sin):
 	return(po_sin,dis_sin,num_sin)
 
 #print len(po_sin)
-n=4
+n=3
 a = np.linspace(0,0,2*(n*3)**2).reshape(n*3,n*3,2)
 a.dtype=float64
 #print a.shape

@@ -134,7 +134,7 @@ def po_pic_all(po_sin,num_sin,sel):
 	freq.close()
 
 #print len(po_sin)
-n=4
+n=3
 a = np.linspace(0,0,2*(n*3)**2).reshape(n*3,n*3,2)
 a.dtype=np.float64
 #print a.shape
@@ -146,7 +146,7 @@ for i in range(n*3):
 xx=a.reshape(1,(3*n)**2,2)[:,:,0]
 yy=a.reshape(1,(3*n)**2,2)[:,:,1]
 
-(po_sin,dis_sin,num_sin)=num_cir(3,1000)
+(po_sin,dis_sin,num_sin)=num_cir(2,1000)
 (po_sin,dis_sin,num_sin)=sortall(po_sin,dis_sin,num_sin)
 #print po_sin
 #print sum(num_sin)

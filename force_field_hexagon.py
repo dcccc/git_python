@@ -60,11 +60,11 @@ def hex_en(po,sele_po):
 	diff_13 = dis_hex_po.count(1)-dis_hex_po.count(3)
 	dis_hex_po = sorted(set(dis_hex_po))
 	if len_hex_po == 2:
-		if dis_hex_po == [0.0, 1.0] :
+		if dis_hex_po == [0.0, 1.0] :#临
 			return force_field[2]
-		elif dis_hex_po == [0.0, 3.0] :
+		elif dis_hex_po == [0.0, 3.0] :#间
 			return force_field[3]
-		elif dis_hex_po == [0.0, 4.0] :
+		elif dis_hex_po == [0.0, 4.0] :#对
 			return force_field[4]
 
 	if len_hex_po == 3:
@@ -103,6 +103,26 @@ def re_po_sele(sele_num):
 	return(energy,sele_num)
 
 
+def  b_z(num,sele_num):
+	(energy,sele_num)=re_po_sele(sele_num)
+	(energy1,sele_num1)=re_po_sele(sele_num)
+	prob=np.exp((energy-energy1)/kt)
+	txt=open(str(sel)+"_in_"+str(n),"a")
+	i=0
+	while (i<num):
+		#print prob
+		if prob > random1.uniform(0,1) :
+			txt.write(str(energy1)+"   "+str(prob)+"\n")
+			energy,sele_num=energy1,sele_num1
+		else:
+			txt.write(str(energy)+"   "+str(prob)+"\n")
+		energy1,sele_num1=re_po_sele(sele_num)
+		prob=np.exp((energy-energy1)/kt)
+		i=i+1
+
+
+
+
 
 
 n=3
@@ -116,40 +136,14 @@ for i in range(n*3):
 		a[i,j,0] = i+0.50*j
 		a[i,j,1] = j*math.sqrt(3.0)*0.5
 
-#(dis_prim,dis_suro)=distan(sel)
-#dis_num=dis_num(dis_prim,dis_suro)
-
-#print dis_num
-
-
-#print energy([0,1,2])
-
-#print len(dis_suro)
-#print len(dis_prim)
-
-
-
-#b=[[i,j] for i in range(n-1,2*n+1) for j in range(n-1,2*n+1)]
-
-#(sele_po,sele_num,sel_po_cen)=po_sele(range(n**2),sel)
-
-#print sel_po_cen
-
 
 
 (sele_po,sele_num,sele_po_cen)=po_sele(range(n**2),sel)
 print  hex_en([3,3],sele_po)
 print  sele_num
 
-(energy,sele_num)=re_po_sele(sele_num)
 
-print  sele_num
-
-(energy,sele_num)=re_po_sele(sele_num)
-
-print  sele_num
-
-
+b_z(1000,sele_num)
 
 
 
