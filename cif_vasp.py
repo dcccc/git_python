@@ -5,6 +5,7 @@ import glob
 import string
 import math
 import sys
+import shutil
 
 
 def cif_to_poscar(cif , n):
@@ -140,6 +141,11 @@ for line in a :
 		os.chdir(os.path.join(path_name + name))
 		pot_car(cif_to_poscar(cif_path , n))
 		os.chdir(cwd)
+		if os.path.isfile("INCAR"):
+			shutil.copy("INCAR",name+"/INCAR")
+		if os.path.isfile("KPOINTS"):
+			shutil.copy("KPOINTS",name+"/KPOINTS")
+
 	else :
 		print line + " doesn't exist!"
 		continue
