@@ -27,6 +27,8 @@ def task_detail():
 			else:
 				cwd = "/"+"/".join(re.split(r'\/',pid_of[0].strip())[1:])	
 			pid = int(line[0])
+			if len(cwd)>55 :
+				cwd = "..." + cwd[-50:]
 			print "%-10s%-10s%-60s%-10d%-10d%-10d%-10d" %(soft, line[1], cwd, pid, pid+1, pid+2, pid+3)
 
 	print "-"*120
