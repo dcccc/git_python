@@ -73,8 +73,8 @@ def cif_to_pw(cif):
  &CONTROL
                  calculation = 'relax' ,
                 restart_mode = 'from_scratch' ,
-                      outdir = '/HOME/whu_slchen_1/WORKSPACE/pwscf/tmp/' ,
-                  pseudo_dir = '/HOME/whu_slchen_1/WORKSPACE/pwscf/pseudo/' ,
+                      outdir = '/home/tmp' ,
+                  pseudo_dir = '/home/pseudo' ,
                       prefix = '%s' ,
                       nstep  = 600,
  /
@@ -153,7 +153,7 @@ psudo_dict={'Ag':'Ag     107.8682     Ag.pbe-d-rrkjus.UPF',
 'Pa':'Pa     231.03588     Pb.pbe-dn-rrkjus_psl.0.2.2.UPF',
 'Pb':'Pb     207.2     Pd.pbe-nd-rrkjus.UPF',
 'Pd':'Pd     106.42     Pt.pbe-nd-rrkjus.UPF',
-'Pt':'Pt     195.084     Rh.pbe-nd-rrkjus.UPF',
+'Pt':'Pt     195.080     Rh.pbe-nd-rrkjus.UPF',
 'Rh':'Rh     102.9055     Rh.pbe-spn-rrkjus_psl.0.3.0.UPF',
 'Ru':'Ru     101.07     Ru.pbe-spn-rrkjus_psl.0.3.0.UPF',
 'S':'S     32.065     S.pbe-n-rrkjus_psl.0.1.UPF',
@@ -175,10 +175,10 @@ psudo_dict={'Ag':'Ag     107.8682     Ag.pbe-d-rrkjus.UPF',
 if len(sys.argv) < 3  :
 	print '''
 	          Usage
-	          python cif_to_pw(piliang)-2.py n   all/cif_file1 cif_file2……
+	          python cif_to_pw(piliang)-2.py n   all/cif_file1 cif_file2…�?
 	          n is the number of the nonmovale atom
 	          all    --all the xx.cif in current directory will be converted
-	          cif_file1 cif_file2……     --the cif_files will be converted
+	          cif_file1 cif_file2…�?    --the cif_files will be converted
 	      '''
 	sys.exit()
 elif len(sys.argv) == 3 and sys.argv[2] == "all":
