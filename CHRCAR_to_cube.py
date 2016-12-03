@@ -38,9 +38,9 @@ def chgcar2cube(chgcar):
 		if  i in [2,3,4] :
 			 axis_vector.append(map(float,re.split(r'\s+',line.strip())))
 		if i==5 :
-			atom_spe=re.split(r'\s',line.strip())
+			atom_spe=re.split(r'\s+',line.strip())
 		if i==6 :
-			atom_num=map(int,re.split(r'\s',line.strip()))
+			atom_num=map(int,re.split(r'\s+',line.strip()))
 
 		if i>=8 and len(line)>24 :
 			atom_pos.append(map(float,re.split(r'\s+',line.strip())))
@@ -87,6 +87,6 @@ def chgcar2cube(chgcar):
 
 
 	# print axis_vector,atom_pos,atom_num,atom_spe,fft_grid
-for i in sys.argv[1:]
+for i in sys.argv[1:]:
 	chgcar2cube(i)
 
