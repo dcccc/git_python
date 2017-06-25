@@ -12,7 +12,7 @@ print "-"*55
 
 for out in vasp_list:
 	if os.path.isdir(out) and os.path.isfile(out+"/POSCAR") :
-		if os.path.isfile(out+"/out"):
+		if os.path.isfile(out+"/OSZICAR"):
 			job_done = os.popen(" tail -n 1 "+out+"/out").readlines()
 			if "writing wavefunctions" in job_done[0] :
 				energy=os.popen("grep F= "+out+"/out | tail -n 1").readlines()
